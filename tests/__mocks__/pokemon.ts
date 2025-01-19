@@ -1,4 +1,3 @@
-// tests/__mocks__/pokemonMocks.ts
 export interface Pokemon {
   id: string;
   name: string;

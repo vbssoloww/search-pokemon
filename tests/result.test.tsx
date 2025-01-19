@@ -1,4 +1,3 @@
-// tests/Result.test.tsx
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Result from '../src/components/Result';

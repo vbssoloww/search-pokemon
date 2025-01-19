@@ -1,4 +1,3 @@
-// src/components/SearchPrompt.tsx
 const SearchPrompt = () => {
     return (
         <div className="max-w-lg mx-auto p-4 bg-gray-800 text-white border border-gray-600 rounded-lg text-center">

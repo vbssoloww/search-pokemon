@@ -1,16 +1,14 @@
-import SearchInput from '../components/SearchInput';
+import SearchBox from '../components/SearchBox';
 import Result from '../components/Result';
 
-const Home = () => {
+const HomePage = () => {
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Search Pokémon</h1>
-        <SearchInput />
-        <Result />
-      </div>
+    <div className="container mx-auto p-4 text-center">
+      <h1 className="text-3xl font-bold mb-4 text-white">Pokémon Search</h1>
+      <SearchBox />
+      <Result />
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

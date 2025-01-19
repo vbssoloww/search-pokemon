@@ -1,4 +1,3 @@
-// src/components/Result.tsx
 "use client";
 
 import { Suspense } from 'react';
@@ -99,14 +98,15 @@ const PokemonResult = () => {
     <div className="max-w-lg mx-auto p-4 bg-gray-800 text-white border border-gray-600 rounded-lg">
       <h2 className="text-xl font-bold mb-4 text-center">{pokemon.name}</h2>
       <Image src={pokemon.image} alt={pokemon.name} width={128} height={128} className="w-32 h-32 mx-auto mb-4" />
-      <div className="text-center">
+      <div className="text-left">
         <p className="mb-2">Number: <span className="font-semibold">{pokemon.number}</span></p>
         <p className="mb-2">Type: <span className="font-semibold">{pokemon.types.join(', ')}</span></p>
         <p className="mb-2">Weight: <span className="font-semibold">{pokemon?.weight?.minimum} - {pokemon?.weight?.maximum}</span></p>
         <p className="mb-2">Height: <span className="font-semibold">{pokemon?.height?.minimum} - {pokemon?.height?.maximum}</span></p>
       </div>
+      <hr className="my-4 border-gray-600" />
       <h3 className="text-lg font-semibold mt-4">Attacks</h3>
-      <ul className="list-disc list-inside mb-4">
+      <ul className="list-disc list-inside mb-4 text-left">
         {pokemon.attacks.fast.map((attack: Attack) => (
           <li key={attack.name} className="mb-2">{attack.name} ({attack.type}): {attack.damage}</li>
         ))}
@@ -114,10 +114,11 @@ const PokemonResult = () => {
           <li key={attack.name} className="mb-2">{attack.name} ({attack.type}): {attack.damage}</li>
         ))}
       </ul>
+      <hr className="my-4 border-gray-600" />
       {pokemon.evolutions && pokemon.evolutions.length > 0 && (
         <>
           <h3 className="text-lg font-semibold mt-4">Evolutions</h3>
-          <ul className="list-disc list-inside">
+          <ul className="list-disc list-inside text-left">
             {pokemon.evolutions.map((evolution: Evolution) => (
               <li
                 key={evolution.id}
