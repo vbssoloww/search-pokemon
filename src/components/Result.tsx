@@ -1,3 +1,4 @@
+// src/components/Result.tsx
 "use client";
 
 import { Suspense } from 'react';
@@ -5,6 +6,7 @@ import { useQuery, gql } from '@apollo/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import SearchPrompt from './SearchPrompt'; // Import the new component
 
 interface Attack {
   name: string;
@@ -74,6 +76,10 @@ const PokemonResult = () => {
       // Handle cases where no Pokémon name is provided
     }
   }, [name]);
+
+  if (!name) {
+    return <SearchPrompt />;
+  }
 
   if (loading) return <p className="text-center mt-4 text-white">Loading...</p>;
   if (error) return <p className="text-center text-red-500 mt-4">Error: {error.message}</p>;
