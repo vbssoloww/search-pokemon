@@ -1,6 +1,6 @@
-// src/components/Result.tsx
 "use client";
 
+import { Suspense } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -59,7 +59,7 @@ const GET_POKEMON = gql`
   }
 `;
 
-const Result = () => {
+const PokemonResult = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const name = searchParams.get('name');
@@ -126,5 +126,11 @@ const Result = () => {
     </div>
   );
 };
+
+const Result = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <PokemonResult />
+  </Suspense>
+);
 
 export default Result;
