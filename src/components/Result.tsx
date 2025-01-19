@@ -4,6 +4,7 @@ import { useQuery, gql } from '@apollo/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import Image from 'next/image';
+import NotFound from './NotFound';
 
 interface Attack {
   name: string;
@@ -77,7 +78,9 @@ const Result = () => {
   if (loading) return <p className="text-center mt-4 text-white">Loading...</p>;
   if (error) return <p className="text-center text-red-500 mt-4">Error: {error.message}</p>;
 
-  if (!data || !data.pokemon) return <p className="text-center mt-4 text-white">Pokemon not found</p>;
+  if (!data || !data.pokemon) {
+    return <NotFound />;
+  }
 
   const { pokemon } = data;
 
