@@ -1,10 +1,10 @@
+// src/components/Result.tsx
 "use client";
 
 import { useQuery, gql } from '@apollo/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import Image from 'next/image';
-import NotFound from './NotFound';
 
 interface Attack {
   name: string;
@@ -79,7 +79,12 @@ const Result = () => {
   if (error) return <p className="text-center text-red-500 mt-4">Error: {error.message}</p>;
 
   if (!data || !data.pokemon) {
-    return <NotFound />;
+    return (
+      <div className="max-w-lg mx-auto p-4 bg-gray-800 text-white border border-gray-600 rounded-lg text-center">
+        <h2 className="text-xl font-bold mb-4">Pokemon Not Found</h2>
+        <p>Sorry, we couldn&apos;t find the Pokémon you were looking for. Please try searching for another name.</p>
+      </div>
+    );
   }
 
   const { pokemon } = data;
@@ -91,8 +96,8 @@ const Result = () => {
       <div className="text-center">
         <p className="mb-2">Number: <span className="font-semibold">{pokemon.number}</span></p>
         <p className="mb-2">Type: <span className="font-semibold">{pokemon.types.join(', ')}</span></p>
-        <p className="mb-2">Weight: <span className="font-semibold">{pokemon.weight.minimum} - {pokemon.weight.maximum}</span></p>
-        <p className="mb-2">Height: <span className="font-semibold">{pokemon.height.minimum} - {pokemon.height.maximum}</span></p>
+        <p className="mb-2">Weight: <span className="font-semibold">{pokemon?.weight?.minimum} - {pokemon?.weight?.maximum}</span></p>
+        <p className="mb-2">Height: <span className="font-semibold">{pokemon?.height?.minimum} - {pokemon?.height?.maximum}</span></p>
       </div>
       <h3 className="text-lg font-semibold mt-4">Attacks</h3>
       <ul className="list-disc list-inside mb-4">
